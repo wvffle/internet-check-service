@@ -85,8 +85,8 @@
             Promise.resolve().then(async () => {
                 try {
                     await Promise.race([
-                        fetch('/', { headers: { Accept: 'text/none' }}),
-                        new Promise((_, reject) => setTimeout(reject, 1000))
+                      fetch(`/?check`, { headers: { Accept: 'text/none' }}),
+                      new Promise((_, reject) => setTimeout(reject, 1000))
                     ])
 
                     online.value = true
