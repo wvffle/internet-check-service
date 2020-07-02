@@ -6,12 +6,12 @@ const { promises: fs, constants: { R_OK } } = require('fs')
 fastify.register(require('fastify-metrics'), { endpoint: '/__metrics' })
 
 fastify.get('/', async (request, reply) => {
-  const agent = request.headers['User-Agent']
+  const agent = request.headers['user-agent']
   if (agent && agent.startsWith('curl/')) {
     return { wyjebalo: 'nie' }
   }
 
-  const accept = request.headers['Accept']
+  const accept = request.headers.accept
 
   if (accept) {
     if (accept === 'text/none') {
